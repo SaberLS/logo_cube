@@ -1,0 +1,76 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>logo_cube</title>
+    <meta name="description" content="logo_cube" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div class="cube-container">
+      <div class="cube">
+        <div class="face front">
+          <div class="logo-container">
+            <img src="./icons/twitter-svgrepo-com.svg" class="logo twitter" />
+          </div>
+        </div>
+        <div class="face back">
+          <div class="logo-container">
+            <img src="./icons/linkedin-svgrepo-com.svg" class="logo linkedin" />
+          </div>
+        </div>
+        <div class="face left">
+          <div class="logo-container">
+            <img src="./icons/github-svgrepo-com.svg" class="logo github" />
+          </div>
+        </div>
+        <div class="face right">
+          <div class="logo-container">
+            <img src="./icons/reddit-svgrepo-com.svg" class="logo reddit" />
+          </div>
+        </div>
+        <div class="face top">
+          <div class="logo-container">
+            <img src="./icons/discord-svgrepo-com.svg" class="logo discord" />
+          </div>
+        </div>
+        <div class="face bottom">
+          <div class="logo-container">
+            <img src="./icons/youtube-svgrepo-com.svg" class="logo youtube" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <svg width="0" height="0">
+      <filter id="backlight-light" y="-50%" x="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blurred" />
+        <feColorMatrix type="saturate" in="blurred" values="1" />
+        <feComposite in="SourceGraphic" operator="over" />
+      </filter>
+      <filter
+        id="backlight-strong"
+        y="-50%"
+        x="-50%"
+        width="200%"
+        height="200%"
+      >
+        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blurred" />
+        <feColorMatrix type="saturate" in="blurred" values="5" />
+        <feComposite in="SourceGraphic" operator="over" />
+      </filter>
+    </svg>
+  </body>
+</html>

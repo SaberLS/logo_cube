@@ -5,7 +5,7 @@
   --size: 200px;
   --alpha: 0.6;
   --invert-color: invert(100%);
-  --backlight-strong: url("#backlight-strong");
+  --backlight-strong: url('#backlight-strong');
 }
 
 body {
@@ -30,29 +30,12 @@ body {
   width: 100%;
   /* pointer event from children */
   pointer-events: none;
-  transition: transform 1s linear;
+  transition: transform 0.3s linear;
+  transform: rotateX(0deg) rotateY(0deg);
 }
 
 .rotate {
   animation: rotate 10s infinite linear;
-}
-
-.unrotate {
-  animation-name: unrotate;
-  animation-duration: 1s;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes unrotate {
-  from {
-  }
-
-  to {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
 }
 
 @keyframes rotate {
@@ -76,7 +59,7 @@ body {
   align-items: center;
   /* pointer event to parent */
   pointer-events: auto;
-  transition: transform 1s linear;
+  transition: transform 0.3s linear;
 }
 
 /* twitter*/
@@ -143,11 +126,11 @@ body {
 .logo-container {
   height: 80%;
   filter: var(--backlight-strong);
+  pointer-events: none;
 }
 
 .logo {
   height: 100%;
   filter: var(--invert-color);
-  /* pointer event to parent */
-  pointer-events: auto;
+  pointer-events: none;
 }

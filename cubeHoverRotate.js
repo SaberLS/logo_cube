@@ -1,27 +1,61 @@
-const cube = document.querySelector(".cube");
+class Cube {
 
-function unRotate() {
-  console.log("mouseover");
-  cube.removeEventListener("mouseover", unRotate);
-  const { transform: matrix } = window.getComputedStyle(cube);
-  cube.classList.remove("rotate");
+  constructor (cube) {
+    this.cube = cube;
 
-  cube.addEventListener("animationcancel", cancel.bind(this, [matrix]));
-  cube.addEventListener("mouseout", rotate);
+    this.cube.addEventListener(
+      'animationcancel',
+      () => {
+        this.cube.style.transform = '';
+        console.log('animationcancel');
+      }
+    );
+
+    this.cube.addEventListener(
+      'mouseover',
+      this.stopOnHoover
+    );
+
+    this.cube.addEventListener(
+      'mouseout',
+      this.rotateOnOut
+    );
+  }
+
+  rotate () {
+    console.log('rotate');
+    this.cube.classList.add('rotate');
+  }
+
+  stop = () => {
+    console.log('stop');
+
+    this.cube.style.transform = this.getComputedTranform();
+
+    this.cube.classList.remove('rotate');
+  };
+
+  stopOnHoover = () => {
+    console.log('hoover');
+
+    if (this.cube.classList.contains('rotate')) {
+      this.stop();
+    }
+  };
+
+  rotateOnOut = ({'relatedTarget': movedTo}) => {
+    console.log('out');
+
+    console.log(movedTo);
+    if (movedTo === null || !movedTo.classList.contains('face')) {
+      this.cube.style.transform = '';
+      this.rotate();
+    }
+  };
+
+  getComputedTranform () {
+    return window.getComputedStyle(this.cube).transform;
+  }
 }
-
-function cancel(matrix) {
-  console.log("cancel");
-  cube.removeEventListener("animationcancel", cancel);
-  cube.style.transform = matrix;
-  cube.style.transform = "rotateX(0deg) rotateY(0deg)";
-}
-
-function rotate() {
-  console.log("mouseout");
-  cube.classList.add("rotate");
-  cube.removeEventListener("mouseout", rotate);
-  cube.addEventListener("mouseover", unRotate);
-}
-
-cube.addEventListener("mouseover", unRotate);
+// eslint-disable-next-line no-unused-vars
+const cube = new Cube(document.querySelector('.cube'));

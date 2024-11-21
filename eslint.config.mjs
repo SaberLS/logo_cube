@@ -34,7 +34,9 @@ export default [
       '@stylistic/js/indent': [
         'error',
         2
-      ]
+      ],
+      '@stylistic/js/multiline-comment-style': 'off',
+      '@stylistic/js/padded-blocks': 'off'
     }
   }
 ];

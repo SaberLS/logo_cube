@@ -30,7 +30,7 @@ body {
   width: 100%;
   /* pointer event from children */
   pointer-events: none;
-  transition: transform 0.3s linear;
+  transition: transform 0.8s linear;
   transform: rotateX(0deg) rotateY(0deg);
 }
 
@@ -59,7 +59,7 @@ body {
   align-items: center;
   /* pointer event to parent */
   pointer-events: auto;
-  transition: transform 0.3s linear;
+  transition: transform 0.4s 0.5s linear;
 }
 
 /* twitter*/

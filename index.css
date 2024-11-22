@@ -5,7 +5,7 @@
   --size: 200px;
   --alpha: 0.6;
   --invert-color: invert(100%);
-  --backlight-strong: url('#backlight-strong');
+  --backlight: url('#backlight');
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 }
 
 .cube-container {
-  filter: var(--backlight-strong);
+  filter: var(--backlight);
   height: var(--size);
   width: var(--size);
 }
@@ -30,7 +30,7 @@ body {
   width: 100%;
   /* pointer event from children */
   pointer-events: none;
-  transition: transform 0.8s linear;
+  transition: transform 0.8s 50ms linear;
   transform: rotateX(0deg) rotateY(0deg);
 }
 
@@ -59,7 +59,7 @@ body {
   align-items: center;
   /* pointer event to parent */
   pointer-events: auto;
-  transition: transform 0.4s 0.5s linear;
+  transition: transform 0.5s 50ms linear;
 }
 
 /* twitter*/
@@ -125,7 +125,7 @@ body {
 
 .logo-container {
   height: 80%;
-  filter: var(--backlight-strong);
+  filter: var(--backlight);
   pointer-events: none;
 }
 

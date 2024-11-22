@@ -59,7 +59,7 @@ body {
   align-items: center;
   /* pointer event to parent */
   pointer-events: auto;
-  transition: transform 0.5s 50ms linear;
+  transition: transform 0.5s 200ms linear;
 }
 
 /* twitter*/

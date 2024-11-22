@@ -55,6 +55,11 @@
     </div>
 
     <svg width="0" height="0">
+      <filter id="backlight" y="-50%" x="-50%" width="500%" height="500%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blurred" />
+        <feColorMatrix type="saturate" in="blurred" values="3" />
+        <feComposite in="SourceGraphic" operator="over" />
+      </filter>
       <filter
         id="backlight-strong"
         y="-50%"

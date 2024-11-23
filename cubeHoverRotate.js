@@ -18,6 +18,7 @@ class Cube {
 
     /**  @member {number} - `timeoutID` used to `cancelTimeout()` delayed rotation */
     this.transitionDuration = this.getTransitionDuration ()
+
     // ----------------- Events ----------------- \\
     this.main.addEventListener (
       'animationcancel',
@@ -69,19 +70,55 @@ class Cube {
 
   }
 
+
   /**
-   * Stops the cube's rotation. at current rotation animation state.
+   * Stops the cube's rotation based on its current state.
+   * If the cube is currently rotating, it freezes the rotation at its current animation state.
+   * If the cube is not rotating but a rotation is scheduled,
+   * it cancels that scheduled rotation.
+   *
+   * @returns {void} This method does not return a value.
    */
   stop = () => {
     if (this.isRotating ()) {
-      // 1. set transform to current computed value to stop at current animation state
-      this.main.style.transform = this.getComputedTransform ()
+      this.freezeRotation ()
+    } else {
+      this.cancelScheduledRotation ()
+    }
+  }
 
-      // 2. cancel animation
-      this.main.classList.remove ('rotate')
+  /**
+   * Freezes the cube's rotation at its current animation state.
+   *
+   * This method sets the cube's transform style to its current computed value,
+   * effectively stopping the rotation animation at its current position.
+   * After freezing the rotation, the method removes the 'rotate' class from the cube's class list,
+   * which cancels the ongoing animation.
+   *
+   * @returns {String}  Transform style at which animation stopped.
+   */
+  freezeRotation () {
+    // 1. set transform to current computed value to stop at current animation state
+    const stopAt = this.getComputedTransform ()
+    this.main.style.transform = this.getComputedTransform ()
 
-    } else { // If the cube is not rotating but a rotation is scheduled (due to a recent mouseout event), it cancels that scheduled rotation.
+    // 2. cancel animation
+    this.main.classList.remove ('rotate')
+    return stopAt
+  }
+
+  /**
+   * Cancels any scheduled rotation of the cube.
+   *
+   * This method checks if there's a pending rotation (scheduled by setTimeout)
+   * and cancels it if it exists. It also resets the willRotate flag.
+   *
+   * @returns {void} This method does not return a value.
+   */
+  cancelScheduledRotation () {
+    if (this.willRotate) {
       clearTimeout (this.willRotate)
+      this.willRotate = 0
     }
   }
 
@@ -125,7 +162,6 @@ class Cube {
   }
 
 }
-
 
 // eslint-disable-next-line no-unused-vars
 const cube = new Cube (document.querySelector ('.cube'))

@@ -1,0 +1,10 @@
+.cube {
+  transition: none;
+}
+.cube:hover {
+  animation: none;
+}
+
+.face {
+  transition-delay: 0ms;
+}

@@ -1,4 +1,4 @@
-import getTransitionDuration from './getTransitionDuration.js'
+import getTransitionDuration from './getTransitionDuration.mjs'
 
 /**
  * Represents a 3D Cube with interactive features.
@@ -6,7 +6,7 @@ import getTransitionDuration from './getTransitionDuration.js'
  * @class Cube
  * @param {HTMLElement} cube - The HTML element representing the cube.
  */
-class Cube {
+export default class Cube {
 
   constructor (cube) {
 
@@ -162,6 +162,3 @@ class Cube {
   }
 
 }
-
-// eslint-disable-next-line no-unused-vars
-const cube = new Cube (document.querySelector ('.cube'))

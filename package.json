@@ -2,7 +2,7 @@
   "name": "logo_cube",
   "version": "1.0.0",
   "description": "cube with social media logos",
-  "main": "index.html",
+  "main": "./src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

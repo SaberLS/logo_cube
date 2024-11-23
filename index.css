@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
 
-  --size: 200px;
+  --size: 20vh;
   --alpha: 0.6;
   --invert-color: invert(100%);
   --backlight: url('#backlight');
@@ -125,12 +125,12 @@ body {
 
 .logo-container {
   height: 80%;
-  filter: var(--backlight);
+
   pointer-events: none;
 }
 
 .logo {
   height: 100%;
-  filter: var(--invert-color);
+  filter: var(--invert-color) var(--backlight);
   pointer-events: none;
 }

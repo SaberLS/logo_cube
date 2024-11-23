@@ -3,7 +3,7 @@
   padding: 0;
 
   --size: 20vh;
-  --alpha: 0.6;
+  --alpha: 0.65;
   --invert-color: invert(100%);
   --backlight: url('#backlight');
 }
@@ -125,7 +125,6 @@ body {
 
 .logo-container {
   height: 80%;
-
   pointer-events: none;
 }
 
@@ -133,4 +132,8 @@ body {
   height: 100%;
   filter: var(--invert-color) var(--backlight);
   pointer-events: none;
+}
+
+.select {
+  --alpha: 1;
 }

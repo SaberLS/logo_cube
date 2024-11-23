@@ -2,22 +2,39 @@ import js from '@eslint/js'
 import globals from 'globals'
 import stylisticJs from '@stylistic/eslint-plugin-js'
 
+import {includeIgnoreFile} from '@eslint/compat'
+import path from 'node:path'
+import {fileURLToPath} from 'node:url'
+
+const __filename = fileURLToPath (import.meta.url)
+const __dirname = path.dirname (__filename)
+const gitignorePath = path.resolve (
+  __dirname,
+  '.gitignore',
+)
+
 export default [
+  includeIgnoreFile (gitignorePath), // ignore gitigonre files
   {
+    'name': 'My ignores',
+    'ignores': ['*package-lock.json'],
+  },
+  {
+    'name': 'js',
     'files': [
       '**/*.js',
-      '**/*.mjs'
+      '**/*.mjs',
     ],
     'languageOptions': {
       'ecmaVersion': 'latest',
       'sourceType': 'module',
       'globals': {
-        ...globals.browser
-      }
+        ...globals.browser,
+      },
     },
 
     'plugins': {
-      '@stylistic/js': stylisticJs
+      '@stylistic/js': stylisticJs,
     },
 
     'rules': {
@@ -29,11 +46,11 @@ export default [
       'default-case-last': 'error', // !! Enforce default clauses in switch statements to be last
       'init-declarations': [
         'error',
-        'always'
+        'always',
       ], // !! Require or disallow initialization in variable declarations
       'yoda': [
         'error',
-        'never'
+        'never',
       ], // !! Disallow "Yoda" conditions
       'no-eval': 'error', // !! Disallow the use of eval()
       'no-implied-eval': 'error', // !! Disallow the use of eval()-like methods setTimeout(), setInterval() or execScript()
@@ -47,7 +64,7 @@ export default [
       'no-undefined': 'error', // !! Disallow the use of undefined as an identifier
       'strict': [
         'error',
-        'safe'
+        'safe',
       ], // Require or disallow strict mode directives
 
       // * ----------- warnings ------------------
@@ -62,7 +79,7 @@ export default [
       'camelcase': 'warn', // Enforce camlcase naming codefault-param-last
       'consistent-this': [
         'warn',
-        'this'
+        'this',
       ], // Enforce consistent naming when capturing the current execution context
       'dot-notation': 'warn', // Enforce dot notation whenever possible
       'logical-assignment-operators': 'warn', // Enforce logical assignments
@@ -72,7 +89,7 @@ export default [
         'err',
         'e',
         'cb',
-        'callback'
+        'callback',
       ], // Disallow common identifiers
       'id-length': 'warn', // Enforce minimum and maximum identifier lengths
       'prefer-rest-params': 'warn', // Require rest parameters instead of arguments
@@ -104,33 +121,35 @@ export default [
       ...stylisticJs.configs['all-flat'].rules,
       '@stylistic/js/eol-last': [
         'error',
-        'always'
+        'always',
       ],
       '@stylistic/js/quotes': [
         'error',
-        'single'
+        'single',
       ],
       '@stylistic/js/indent': [
         'error',
-        2
+        2,
       ],
       '@stylistic/js/multiline-comment-style': 'off',
       '@stylistic/js/padded-blocks': 'off',
       '@stylistic/js/function-call-spacing': [
         'error',
-        'always'
+        'always',
       ],
       '@stylistic/js/no-extra-semi': 'error',
       '@stylistic/js/semi-style': [
         'error',
-        'last'
+        'last',
       ],
       '@stylistic/js/semi': [
         'error',
-        'never'
+        'never',
       ],
       '@stylistic/js/array-bracket-newline': ['error',
-        'consistent']
-    }
-  }
+        'consistent'],
+      '@stylistic/js/comma-dangle': ['error',
+        'always-multiline'],
+    },
+  },
 ]

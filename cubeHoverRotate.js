@@ -4,25 +4,32 @@ class Cube {
     this.main = cube
     this.willRotate = setTimeout (
       () => {},
-      1
+      1,
     )
 
+    // ----------------- Events ----------------- \\
     this.main.addEventListener (
       'animationcancel',
       () => {
         // console.log('animationcancel');
         this.main.style.transform = '' // set transform to default value. Starts transition which reverses the .rotate animation
-      }
+      },
     )
 
     this.main.addEventListener (
       'mouseover',
-      this.stop
+      ({target}) => {
+        this.stop ()
+        target.classList.add ('select')
+      },
     )
 
     this.main.addEventListener (
       'mouseout',
-      this.rotate
+      (event) => {
+        this.rotate (event)
+        event.target.classList.remove ('select')
+      },
     )
   }
 
@@ -41,7 +48,7 @@ class Cube {
         }
 
       },
-      800 // TODO make this computed transform.duration
+      800, // TODO make this computed transform.duration
     )
 
   }
@@ -56,7 +63,7 @@ class Cube {
 
       // 2. cancel animation
       this.main.classList.remove ('rotate')
-    } else { // if this is not currently rotating clear timeout
+    } else { // if this is not currently rotating clear timeout which will prevent rotating
       clearTimeout (this.willRotate)
     }
   }

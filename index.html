@@ -16,56 +16,92 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">
         You are using an <strong>outdated</strong> browser. Please
-        <a href="#">upgrade your browser</a> to improve your experience.
+        <a target="_blank" href="#">upgrade your browser</a> to improve your
+        experience.
       </p>
     <![endif]-->
     <div class="cube-container">
-      <div class="cube">
-        <div class="face front">
+      <div class="cube rotate">
+        <!-- DISCORD -->
+        <div class="face front" href="https://discord.com">
           <div class="logo-container">
-            <img src="./icons/discord-svgrepo-com.svg" class="logo discord" />
+            <img
+              src="./icons/discord-svgrepo-com.svg"
+              class="logo discord selectDisable"
+            />
           </div>
         </div>
-        <div class="face back">
+        <!-- LINKEDIN -->
+        <a target="_blank" class="face back" href="https://linkedin.com">
           <div class="logo-container">
-            <img src="./icons/linkedin-svgrepo-com.svg" class="logo linkedin" />
+            <img
+              src="./icons/linkedin-svgrepo-com.svg"
+              class="logo linkedin selectDisable"
+            />
           </div>
-        </div>
-        <div class="face left">
+        </a>
+        <!-- GITHUB -->
+        <a
+          target="_blank"
+          class="face left selectDisable"
+          href="https://github.com/SaberLS"
+        >
           <div class="logo-container">
-            <img src="./icons/github-svgrepo-com.svg" class="logo github" />
+            <img
+              src="./icons/github-svgrepo-com.svg"
+              class="logo github selectDisable"
+            />
           </div>
-        </div>
-        <div class="face right">
+        </a>
+        <!-- REDDIT -->
+        <a target="_blank" class="face right" href="https://reddit.com">
           <div class="logo-container">
-            <img src="./icons/reddit-svgrepo-com.svg" class="logo reddit" />
+            <img
+              src="./icons/reddit-svgrepo-com.svg"
+              class="logo reddit selectDisable"
+            />
           </div>
-        </div>
-        <div class="face top">
+        </a>
+        <!-- TWITTER -->
+        <a target="_blank" class="face top" href="https://x.com">
           <div class="logo-container">
-            <img src="./icons/twitter-svgrepo-com.svg" class="logo twitter" />
+            <img
+              src="./icons/twitter-svgrepo-com.svg"
+              class="logo twitter selectDisable"
+            />
           </div>
-        </div>
-        <div class="face bottom">
+        </a>
+        <!-- YOUTUBE -->
+        <a target="_blank" class="face bottom" href="https://youtube.com">
           <div class="logo-container">
-            <img src="./icons/youtube-svgrepo-com.svg" class="logo youtube" />
+            <img
+              src="./icons/youtube-svgrepo-com.svg"
+              class="logo youtube selectDisable"
+            />
           </div>
-        </div>
+        </a>
       </div>
     </div>
 
     <svg width="0" height="0">
+      <filter id="backlight" y="-50%" x="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blurred" />
+        <feColorMatrix type="saturate" in="blurred" values="3" />
+        <feComposite in="SourceGraphic" operator="over" />
+      </filter>
       <filter
         id="backlight-strong"
         y="-50%"
         x="-50%"
-        width="300%"
-        height="300%"
+        width="200%"
+        height="200%"
       >
         <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blurred" />
-        <feColorMatrix type="saturate" in="blurred" values="5" />
+        <feColorMatrix type="saturate" in="blurred" values="3" />
         <feComposite in="SourceGraphic" operator="over" />
       </filter>
     </svg>
+
+    <script src="./cubeHoverRotate.js" type="module"></script>
   </body>
 </html>

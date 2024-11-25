@@ -1,0 +1,20 @@
+.pos-centerX {
+  left: calc(50% - var(--margin-X));
+}
+.pos-centerY {
+  top: calc(50% - var(--margin-Y));
+}
+
+.pos-left {
+  left: 0;
+}
+.pos-right {
+  right: 0;
+}
+
+.pos-bottom {
+  bottom: 0;
+}
+.pos-top {
+  top: 0;
+}

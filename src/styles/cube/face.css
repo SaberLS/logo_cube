@@ -1,12 +1,9 @@
 .face {
+  /* positioned relative to the cube */
   position: absolute;
   height: 100%;
   width: 100%;
   transform-style: flat;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   /* pointer event to parent */
   pointer-events: auto;
   transition: transform 0.5s 200ms linear;

@@ -1,10 +1,35 @@
 .cube-container {
+  /* height and width of cube's single face */
   --size: 20vh;
+
+  /* height and width of unfolded cube */
   --max-height: calc(var(--size) * 3);
   --max-width: calc(var(--size) * 4);
+
+  /* Used to center cube container on the screen */
+  --margin-Y: calc(var(--max-height) / 2);
+  --margin-X: calc(var(--max-width) / 2.5);
+
+  /* center cube inside cub-container */
+  /* distances between unfolded cube center face and cube-container border */
+  /* there is one face on the left from cube center in unfolded cube */
+  --left: var(--size);
+  /* there are two face's from cube center in unfolded cube */
+  --right: calc(var(--size) * -1);
+  --top: var(--size);
+  --bottom: calc(var(--size) * -1);
+
+  /* transparency of cube's faces */
   --alpha: 0.65;
+
+  /* original svgs are black so inver their colors to look better */
   --invert-color: invert(100%);
+
+  /* url to backlight svg filter */
   --backlight: url('#backlight');
+
+  /* cube is positioned relative to the viewport */
+  position: fixed;
 
   /* unfolded cube size */
   height: var(--max-height);
@@ -13,6 +38,8 @@
 
 .cube-backlight {
   position: relative;
+  left: var(--left);
+  top: var(--top);
   filter: var(--backlight);
   height: var(--size);
   width: var(--size);
@@ -47,14 +74,4 @@
   100% {
     transform: rotateX(360deg) rotateY(360deg);
   }
-}
-
-.right-bottom {
-  bottom: calc(var(--size) / 2);
-  right: calc(var(--size) / 2);
-}
-
-.center {
-  left: calc(50% - var(--max-width) / 2);
-  top: calc(50% - var(--max-height) / 2);
 }

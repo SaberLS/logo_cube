@@ -1,0 +1,60 @@
+.cube-container {
+  --size: 20vh;
+  --max-height: calc(var(--size) * 3);
+  --max-width: calc(var(--size) * 4);
+  --alpha: 0.65;
+  --invert-color: invert(100%);
+  --backlight: url('#backlight');
+
+  /* unfolded cube size */
+  height: var(--max-height);
+  width: var(--max-width);
+}
+
+.cube-backlight {
+  position: relative;
+  filter: var(--backlight);
+  height: var(--size);
+  width: var(--size);
+}
+
+.cube {
+  /* cover all given space */
+  height: 100%;
+  width: 100%;
+
+  /* children preserve their 3d position */
+  transform-style: preserve-3d;
+  /* all transforms are relative to the center of the cube */
+  transform-origin: center;
+  /* default transform */
+  transform: rotateX(0deg) rotateY(0deg);
+  /* pointer event from children */
+  pointer-events: none;
+  /* cube folding transition */
+  transition: transform 0.8s 50ms linear;
+}
+
+.rotate {
+  animation: rotate 10s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.right-bottom {
+  bottom: calc(var(--size) / 2);
+  right: calc(var(--size) / 2);
+}
+
+.center {
+  left: calc(50% - var(--max-width) / 2);
+  top: calc(50% - var(--max-height) / 2);
+}

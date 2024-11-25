@@ -1,0 +1,10 @@
+.logo-container {
+  height: 80%;
+  pointer-events: none;
+}
+
+.logo {
+  height: 100%;
+  filter: var(--invert-color) var(--backlight);
+  pointer-events: none;
+}

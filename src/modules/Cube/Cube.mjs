@@ -1,4 +1,5 @@
-import getTransitionDuration from './getTransitionDuration.mjs'
+import getTransitionDuration from './getTransitionDuration/getTransitionDuration.mjs'
+import computedStyle from './computedStyle.mjs'
 
 /**
  * Represents a 3D Cube with interactive features.
@@ -16,9 +17,8 @@ export default class Cube {
     /**  @member {number} - `timeoutID` used to `cancelTimeout()` delayed rotation */
     this.willRotate = 0
 
-    /**  @member {number} - `timeoutID` used to `cancelTimeout()` delayed rotation */
+    /**  @member {number} - computed transition-duration + tranistion-delay */
     this.transitionDuration = this.getTransitionDuration ()
-
     // ----------------- Events ----------------- \\
     this.main.addEventListener (
       'animationcancel',
@@ -58,9 +58,9 @@ export default class Cube {
       () => {
         // if cursor was moved out of window or on element which is not part of cube
         if (movedTo === null || !movedTo.classList.contains ('face')) {
-          // console.log('rotate');
-          // console.log(this.main.style);
-          this.main.style.transform = '' // set transform to default value
+          // console.log ('rotate')
+          // console.log (this.main.style)
+          this.setDefaultTransform () // set transform to default value
           this.main.classList.add ('rotate') // start rotate animation
         }
 
@@ -99,8 +99,8 @@ export default class Cube {
    */
   freezeRotation () {
     // 1. set transform to current computed value to stop at current animation state
-    const stopAt = this.getComputedTransform ()
-    this.main.style.transform = this.getComputedTransform ()
+    const stopAt = this.computedTransform ()
+    this.main.style.transform = stopAt
 
     // 2. cancel animation
     this.main.classList.remove ('rotate')
@@ -131,14 +131,13 @@ export default class Cube {
     return this.main.classList.contains ('rotate')
   }
 
-  /**
-   * Retrieves the current computed transform value of the cube.
-   *
-   * @returns {string} - The current computed transform value.
-   */
-  getComputedTransform () {
-    return window.getComputedStyle (this.main).transform
+  computedTransform () {
+    return computedStyle (
+      this.main,
+      'transform',
+    )
   }
+
 
   /**
  * Resets the cube's transform style to its default value.
@@ -153,7 +152,7 @@ export default class Cube {
   }
 
   /**
-   * Retrieves the transition duration of the cube's rotate animation.
+   * Retrieves the transition duration.
    *
    * @returns {number} - The transition duration in milliseconds.
    */

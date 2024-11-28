@@ -99,14 +99,8 @@
         <feColorMatrix type="saturate" in="blurred" values="3" />
         <feComposite in="SourceGraphic" operator="over" />
       </filter>
-      <filter
-        id="backlight-strong"
-        y="-50%"
-        x="-50%"
-        width="200%"
-        height="200%"
-      >
-        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blurred" />
+      <filter id="backlight-logo" y="-50%" x="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blurred" />
         <feColorMatrix type="saturate" in="blurred" values="3" />
         <feComposite in="SourceGraphic" operator="over" />
       </filter>

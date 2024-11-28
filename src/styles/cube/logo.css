@@ -9,6 +9,6 @@
 
 .logo {
   height: 80%;
-  filter: var(--invert-color) var(--backlight);
+  filter: var(--invert-color) var(--backlight-logo);
   pointer-events: none;
 }

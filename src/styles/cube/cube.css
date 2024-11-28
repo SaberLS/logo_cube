@@ -27,6 +27,8 @@
 
   /* url to backlight svg filter */
   --backlight: url('#backlight');
+  /* url to logo backlight svg filter */
+  --backlight-logo: url('#backlight-logo');
 
   /* cube is positioned relative to the viewport */
   position: fixed;
